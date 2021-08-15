@@ -802,6 +802,29 @@ a:hover {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.event-mf .box-shadow-full {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.event-mf .event-img {
+  margin-bottom: 2rem;
+}
+
+.event-mf .event-img img {
+  margin-left: 10px;
+}
+
+@media (min-width: 767px) {
+  .event-mf .box-pl2 {
+    margin-top: 3rem;
+    padding-left: 0rem;
+  }
+}
+
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
 .about-mf .box-shadow-full {
   padding-top: 4rem;
   padding-bottom: 4rem;
