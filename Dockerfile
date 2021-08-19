@@ -1,3 +1,4 @@
+
 FROM node:alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
@@ -12,6 +13,6 @@ COPY --chown=node:node . .
 
 USER node
 
-EXPOSE 3333
+EXPOSE 3000
 
 CMD [ "npm","start"]
