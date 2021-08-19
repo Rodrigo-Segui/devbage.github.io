@@ -28,22 +28,12 @@ mongoose.connect('mongodb://db:27017/mongo')
     console.log(err)
   })
 
-//mongoose
- /// .connect('mongodb://db:27017/crud-node-mongo-docker', {
-   // useNewUrlParser: true
-  //})
-  //.then(result => {
-    //console.log('MongoDB Conectado');
-  //})
-  //.catch(error => {
-    //console.log(error);
-  //});
 
 //Adquirindo as Rotas
 const index = require('./router/index');
-const eventos = require('.router/eventos');
+const eventos = require('./router/evento');
 //Configurando as Rotas
 app.use('/', index);
-app.use('/', eventos);
+app.use('/eventos', eventos);
 
 module.exports = app;

@@ -1,15 +1,17 @@
-FROM node:11-alpine
+FROM node:alpine
 
-WORKDIR /node-app
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-COPY package.json .
+WORKDIR /home/node/app
 
-RUN npm install --quiet
+COPY package*.json ./
 
-RUN npm install nodemon -g --quiet
+RUN npm install
 
-COPY . . 
+COPY --chown=node:node . .
 
-EXPOSE 9000
+USER node
 
-CMD nodemon -L --watch . index.js
+EXPOSE 3333
+
+CMD [ "npm","start"]
