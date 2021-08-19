@@ -14,9 +14,10 @@ router.get('/', (req, res) => {
 
 // Cria um novo documento e salva no banco
 router.post('/novo', (req, res) => {
+  console.log(req.body);
   const novoEvento = new Evento({
-    marca: req.body.nome,
-    modelo: req.body.descricao
+    nome: req.body.nome,
+    descricao: req.body.descricao
   });
 
   novoEvento

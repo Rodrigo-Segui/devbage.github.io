@@ -23,7 +23,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}))
 app.use(express.json());
 
-mongoose.connect('mongodb://db:27017')
+mongoose.connect('mongodb://root:example@localhost:27017/admin')
   .catch(err => {
     console.log(err)
   })
