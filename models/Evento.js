@@ -9,6 +9,9 @@ const eventoSchema = new Schema({
   descricao: {
     type: String,
   },
+  local: {
+    type: String,
+  },
   criadoEm: {
     type: Date,
     default: Date.now

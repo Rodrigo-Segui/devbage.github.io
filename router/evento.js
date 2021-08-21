@@ -14,10 +14,10 @@ router.get('/', (req, res) => {
 
 // Cria um novo documento e salva no banco
 router.post('/novo', (req, res) => {
-  console.log(req.body);
   const novoEvento = new Evento({
     nome: req.body.nome,
-    descricao: req.body.descricao
+    descricao: req.body.descricao,
+    local:  req.body.local
   });
 
   novoEvento
@@ -30,9 +30,9 @@ router.post('/novo', (req, res) => {
     });
 });
 
-// Atualizando dados de um carro já existente
+// Atualizando dados de um evento já existente
 router.put('/editar/:id', (req, res) => {
-  const novosDados = { marca: req.body.nome, modelo: req.body.descricao};
+  const novosDados = { nome: req.body.nome, descricao: req.body.descricao, local: req.body.local };
 
   Evento.findOneAndUpdate({ _id: req.params.id }, novosDados, { new: true })
     .then(evento => {
@@ -41,7 +41,7 @@ router.put('/editar/:id', (req, res) => {
     .catch(error => res.status(500).json(error));
 });
 
-// Deletando um carro do banco de dados
+// Deletando um eventp do banco de dados
 router.delete('/delete/:id', (req, res) => {
   Evento.findOneAndDelete({ _id: req.params.id })
     .then(evento => {
