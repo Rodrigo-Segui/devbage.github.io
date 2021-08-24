@@ -7,6 +7,7 @@ const Evento = require('../models/Evento');
 router.get('/', (req, res) => {
   Evento.find()
     .then(eventos => {
+      //return res.json( { message: "Hello world"  } );
       res.json(eventos);
     })
     .catch(error => res.status(500).json(error));

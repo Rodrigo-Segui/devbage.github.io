@@ -23,27 +23,26 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}))
 app.use(express.json());
 
-mongoose.connect('mongodb://db:27017/mongo')
-  .catch(err => {
-    console.log(err)
-  })
+const { MongoClient } = require("mongodb");
+const uri = 'mongodb://localhost:27017';  
 
-//mongoose
- /// .connect('mongodb://db:27017/crud-node-mongo-docker', {
-   // useNewUrlParser: true
-  //})
-  //.then(result => {
-    //console.log('MongoDB Conectado');
-  //})
-  //.catch(error => {
-    //console.log(error);
-  //});
+(async function() {
+  try {
+
+    const client = await MongoClient.connect(uri,{ useNewUrlParser: true });
+
+    client.close();
+  } catch(e) {
+    console.error(e)
+  }
+
+})()
 
 //Adquirindo as Rotas
 const index = require('./router/index');
-const eventos = require('.router/eventos');
+const evento = require('./router/evento');
 //Configurando as Rotas
 app.use('/', index);
-app.use('/', eventos);
+app.use('/evento', evento);
 
 module.exports = app;
