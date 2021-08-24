@@ -15,4 +15,12 @@ describe('Event', () => {
 
         expect(responseEvent.body).toHaveProperty('_id');
     })
+
+    it('should be able to get a event', async () => {
+
+        const responseEvent = await request(app)
+            .get('/eventos/')
+            
+        expect(responseEvent.body[0]).toHaveProperty('_id');
+    })
 })
