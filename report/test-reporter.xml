@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+    <file path="/home/mateus/Documentos/devbage.github.io/test/create_event.spec.js">
+        <testCase name="Event should be able to create a new event" duration="220"/>
+        <testCase name="Event should be able to get a event" duration="65"/>
+        <testCase name="Event should be able to create a edit event" duration="59"/>
+        <testCase name="Event should be able to create a delete event" duration="32"/>
+    </file>
+</testExecutions>

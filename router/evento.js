@@ -17,7 +17,9 @@ router.post('/novo', (req, res) => {
   const novoEvento = new Evento({
     nome: req.body.nome,
     descricao: req.body.descricao,
-    local:  req.body.local
+    local:  req.body.local,
+    data: req.body.data,
+    ativo: req.body.ativo
   });
 
   novoEvento

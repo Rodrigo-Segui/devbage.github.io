@@ -12,6 +12,12 @@ const eventoSchema = new Schema({
   local: {
     type: String,
   },
+  data: {
+    type: Date,
+  },
+  ativo: {
+    type: Boolean,
+  },
   criadoEm: {
     type: Date,
     default: Date.now

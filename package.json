@@ -4,7 +4,8 @@
   "description": "![image](https://user-images.githubusercontent.com/6804621/81020714-d1abc300-8e3f-11ea-8930-3caef6144e82.png)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "cross-env jest --coverage --runInBand"
   },
   "repository": {
     "type": "git",
@@ -24,10 +25,23 @@
     "express-handlebars": "^5.3.2",
     "handlebars": "^4.7.7",
     "http": "^0.0.1-security",
+    "jest-sonar-reporter": "^2.0.0",
     "mongoose": "^5.13.7",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "cross-env": "^7.0.3",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "jestSonar": {
+    "reportPath": "report",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   }
 }
