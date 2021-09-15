@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
   Evento.find()
     .then(eventos => {
       res.json(eventos);
+      console.log(eventos);
     })
     .catch(error => res.status(500).json(error));
 });
-
 // Cria um novo documento e salva no banco
 router.post('/novo', (req, res) => {
   const novoEvento = new Evento({
@@ -34,7 +34,7 @@ router.post('/novo', (req, res) => {
 
 // Atualizando dados de um evento já existente
 router.put('/editar/:id', (req, res) => {
-  const novosDados = { nome: req.body.nome, descricao: req.body.descricao, local: req.body.local };
+  const novosDados = { nome: req.body.nome, descricao: req.body.descricao, local: req.body.local, data: req.body.data, data: req.body.ativo };
 
   Evento.findOneAndUpdate({ _id: req.params.id }, novosDados, { new: true })
     .then(evento => {

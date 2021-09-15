@@ -1,65 +1,40 @@
-<style>
-    .carousel-control-prev-icon {
- background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23159957' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
-}
-
-.carousel-control-next-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23159957' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
-}
-</style>
-
-<script>
-
-
-</script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <section id="event" class="event-mf sect-pt4 route">
+<div id="carousel" class="my-5">
+  <div id="carousel-items" class="row">
+    {{#each eventos}}
+      {{!-- Product --}}
+      <div class="col d-flex flex-column justify-content-center align-items-center mx-4">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="box-shadow-full">
-                    
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" style="margin-left: 300px; width: 600px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                    <h2 style="color: #159957;">1° Meetup devBagé</h2>
-                                    <h5>21/09/2019</h5>
-                                    <p>É com muito prazer que convidamos a todos para o primeiro encontro da comunidade “devBagé”.
-                                    Neste encontro temos como objetivo trazer algumas ideias de como iniciar na carreira de TI,
-                                    o que estudar e como se portar perante uma empresa.</p>
-                                    <button style="background-color: #159957; color: white" class="btn">Inscrição</button>
-                                </div>
-                                <div class="carousel-item" style="margin-left: 300px; width: 600px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                    <h2 style="color: #159957;">2° Meetup devBagé</h2>
-                                    <h5>21/09/2019</h5>
-                                    <p>É com muito prazer que convidamos a todos para o primeiro encontro da comunidade “devBagé”.
-                                    Neste encontro temos como objetivo trazer algumas ideias de como iniciar na carreira de TI,
-                                    o que estudar e como se portar perante uma empresa.</p>
-                                    <button style="background-color: #159957; color: white" class="btn">Inscrição</button>
-                                </div>
-                                <div class="carousel-item" style="margin-left: 300px; width: 600px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                    <h2 style="color: #159957;">3° Meetup devBagé</h2>
-                                    <h5>21/09/2019</h5>
-                                    <p>É com muito prazer que convidamos a todos para o primeiro encontro da comunidade “devBagé”.
-                                    Neste encontro temos como objetivo trazer algumas ideias de como iniciar na carreira de TI,
-                                    o que estudar e como se portar perante uma empresa.</p>
-                                    <button style="background-color: #159957; color: white" class="btn">Inscrição</button>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="color: green;">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="color: green;">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div> 
-                </div>
-            </div>
+        <p style="color: green;" class="prod-name text-center my-0 px-1">{{dataValues.nome}}</p>
+
+        <div class="prod-description d-flex justify-content-center align-items-center">
+          <p class="text-center my-0 px-1">
+            {{dataValues.descricao}}
+          </p>
         </div>
+
+        <div class="w-100 text-center mt-1">
+          <a href="/produtos/cadastrar">
+            <button class="btn btn-dk px-2 px-md-4 py-1">
+              <i class="fas fa-shopping-cart"></i>
+                    Clique Aqui para se Inscrever</button>
+          </a>
+        </div>
+
+      </div> 
+    {{/each}}
+  </div>
+
+  <div id="btn-prev" class="d-inline">
+    <div class="d-flex h-100 align-items-center justify-content-end">
+      <i class="fas fa-angle-left fa-2x"></i>
     </div>
+  </div>
+
+  <div id="btn-next" class="d-inline">
+    <div class="d-flex h-100 align-items-center justify-content-start">
+      <i class="fas fa-angle-right fa-2x"></i>
+    </div>
+  </div>
+</div>
 </section>

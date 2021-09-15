@@ -4,7 +4,6 @@ const { Schema } = mongoose;
 const eventoSchema = new Schema({
   nome: {
     type: String,
-    
   },
   descricao: {
     type: String,

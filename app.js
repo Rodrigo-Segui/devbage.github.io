@@ -32,8 +32,10 @@ mongoose.connect('mongodb://root:example@localhost:27017/admin')
 //Adquirindo as Rotas
 const index = require('./router/index');
 const eventos = require('./router/evento');
+const inscricoes = require('./router/inscricao')
 //Configurando as Rotas
 app.use('/', index);
 app.use('/eventos', eventos);
+//app.use('/incricoes', inscricoes);
 
 module.exports = app;
