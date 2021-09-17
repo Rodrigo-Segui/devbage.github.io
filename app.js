@@ -36,6 +36,6 @@ const inscricoes = require('./router/inscricao')
 //Configurando as Rotas
 app.use('/', index);
 app.use('/eventos', eventos);
-//app.use('/incricoes', inscricoes);
+app.use('/incricoes', inscricoes);
 
 module.exports = app;

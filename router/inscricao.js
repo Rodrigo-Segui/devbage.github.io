@@ -1,4 +1,4 @@
-/*const express = require('express');
+const express = require('express');
 const router = express.Router();
 
 const Inscricao = require('../models/Inscricao');
@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
 router.post('/nova', (req, res) => {
   const novaInscricao = new Inscricao({
     nome: req.body.nome,
-    email: req.body.descricao,
-    cpf: req.body.descricao
+    email: req.body.email,
+    cpf: req.body.cpf
   });
 
   novaInscricao
@@ -51,4 +51,3 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 module.exports = router;
-*/
