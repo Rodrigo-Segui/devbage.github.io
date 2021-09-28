@@ -17,7 +17,8 @@ router.post('/nova', (req, res) => {
   const novaInscricao = new Inscricao({
     nome: req.body.nome,
     email: req.body.email,
-    cpf: req.body.cpf
+    cpf: req.body.cpf,
+    idEvento: req.body.id
   });
 
   novaInscricao

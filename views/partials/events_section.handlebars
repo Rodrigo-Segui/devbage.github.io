@@ -1,8 +1,12 @@
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="modalCadastroLabel" aria-hidden="true">
+<div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="modalCadastroLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,14 +16,20 @@
         </button>
       </div>
       <form action="/incricoes/nova" method="POST">
-      <div class="modal-body">
-        <div class="form-group">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="hidden" class="form-control" id="id" name="id" aria-describedby="id"
+              placeholder="Seu id">
+          </div>
+          <div class="form-group">
             <label for="exampleInputEmail1">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nome" placeholder="Seu nome">
+            <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nome"
+              placeholder="Seu nome">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Seu email">
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="email"
+              placeholder="Seu email">
             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
           </div>
           <div class="form-group">
@@ -27,11 +37,11 @@
             <input type="cpf" class="form-control" id="cpf" name="cpf" aria-describedby="cpf" placeholder="Seu CPF">
             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu CPF, com ninguém.</small>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button style="background-color: green; border: 0;" type="submit" class="btn btn-primary">Cadastrar</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Fechar</button>
+          <button style="background-color: green; border: 0;" type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -39,40 +49,50 @@
 
 <section id="event" class="event-mf sect-pt4 route">
 
-<div id="carousel" class="my-5">
-  <div id="carousel-items" class="row">
-    {{#each eventos}}
+  <div id="carousel" class="my-5">
+    <div id="carousel-items" class="row">
+      {{#each eventos}}
       {{!-- Product --}}
       <div class="col d-flex flex-column justify-content-center align-items-center mx-4">
 
-        <h3 style="color: green;" class="prod-name text-center my-0 px-1">{{dataValues.nome}}</h3>
+        <h3 style="color: green;" class="prod-name text-center my-0 px-1">{{nome}}</h3>
 
         <div class="prod-description d-flex justify-content-center align-items-center">
           <p class="text-center my-0 px-1">
-            {{dataValues.descricao}}
+            {{descricao}}
           </p>
         </div>
 
         <div class="w-100 text-center mt-1">
-          <button style="background-color: green; border: 0;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCadastro">
+          <button style="background-color: green; border: 0;" type="button" class="btn btn-primary" onclick="openModal('{{_id}}')">
             Clique Aqui para se Inscrever
           </button>
         </div>
 
-      </div> 
-    {{/each}}
-  </div>
+      </div>
+      {{/each}}
+    </div>
 
-  <div id="btn-prev" class="d-inline">
-    <div class="d-flex h-100 align-items-center justify-content-end">
-      <i class="fas fa-angle-left fa-2x"></i>
+    <div id="btn-prev" class="d-inline">
+      <div class="d-flex h-100 align-items-center justify-content-end">
+        <i class="fas fa-angle-left fa-2x"></i>
+      </div>
+    </div>
+
+    <div id="btn-next" class="d-inline">
+      <div class="d-flex h-100 align-items-center justify-content-start">
+        <i class="fas fa-angle-right fa-2x"></i>
+      </div>
     </div>
   </div>
-
-  <div id="btn-next" class="d-inline">
-    <div class="d-flex h-100 align-items-center justify-content-start">
-      <i class="fas fa-angle-right fa-2x"></i>
-    </div>
-  </div>
-</div>
 </section>
+
+<script>
+  function openModal(id){
+    document.getElementById("id").value = id;
+     $("#modalCadastro").modal("show");
+  }
+  function closeModal(){
+    $("#modalCadastro").modal("hide");
+  }
+</script>
