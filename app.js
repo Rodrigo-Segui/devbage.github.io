@@ -1,3 +1,5 @@
+require('dotenv/config');
+
 const cors = require('cors');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
@@ -23,7 +25,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}))
 app.use(express.json());
 
-mongoose.connect('mongodb://root:example@localhost:27017/admin')
+mongoose.connect(`mongodb://root:${process.env.DB_COLECTION}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_USER}`)
   .catch(err => {
     console.log(err)
   })
@@ -33,6 +35,8 @@ mongoose.connect('mongodb://root:example@localhost:27017/admin')
 const index = require('./router/index');
 const eventos = require('./router/evento');
 const inscricoes = require('./router/inscricao')
+const admin = require('./router/admin')
+
 //Configurando as Rotas
 app.use('/', index);
 app.use('/eventos', eventos);
