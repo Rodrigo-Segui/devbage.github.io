@@ -4,9 +4,6 @@ const router = Router();
 
 router.get('/', (req,res) => {
 
-  var eventos1 = []
-  var obj = {}
-
   Evento.find()
     .then(eventos => {
       
