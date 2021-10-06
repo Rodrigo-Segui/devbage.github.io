@@ -5,16 +5,20 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session')
+const passport = require('passport');
 
 const app = express();
 
-//Configurando pastas dos arquivos estáticos.
-app.use(express.static(__dirname + '/public'));
 
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.disable('x-powered-by'); // afastar rotinas mais simples de varredura e ataques automatizados
+// afastar rotinas mais simples de varredura e ataques automatizados
+app.disable('x-powered-by'); 
+
+//Configurando pastas dos arquivos estáticos.
+app.use(express.static(__dirname + '/public'));
 
 //Configurando o CORS
 app.use(cors());
@@ -24,6 +28,10 @@ app.use(morgan('dev'));
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json());
+app.use(session({ secret: `${process.env.SECRET}`, resave: false, saveUninitialized: false }));
+
+app.use(passport.initialize());
+app.use(passport.authenticate('session'));
 
 mongoose.connect(`mongodb://root:${process.env.DB_COLECTION}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_USER}`)
   .catch(err => {
