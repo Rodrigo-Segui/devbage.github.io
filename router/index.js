@@ -21,7 +21,7 @@ router.get('/',(req,res) => {
 
 });
 
-router.get('/login', (req, res) => {
+router.get('/admin/login', (req, res) => {
    return res.render('login', { layout: 'admin' });
 })
 
