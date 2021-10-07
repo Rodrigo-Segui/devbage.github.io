@@ -25,7 +25,9 @@ router.get('/admin/login', (req, res) => {
    return res.render('login', { layout: 'admin' });
 })
 
-
+router.get('/admin/eventos', (req, res) => {
+  return res.render('cadastroevento', { layout: 'admin' });
+})
 
 
 module.exports = router

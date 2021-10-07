@@ -8,7 +8,7 @@ const Admin = require('../models/Admin');
 const authenticationMiddleware = require('../middleware/autentic')
 
 router.post('/login/', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/admin/eventos',
     failureRedirect: '/login',
     failureMessage: true
   }));
