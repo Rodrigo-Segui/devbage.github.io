@@ -6,10 +6,10 @@ const bcrypt = require('bcrypt');
 const Admin = require('../models/Admin');
 
 router.post('/login/', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureMessage: true
-}));
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureMessage: true
+  }));
 
 router.post('/cadastrar', async (req,res) =>{
 
