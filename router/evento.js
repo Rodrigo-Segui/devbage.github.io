@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Evento = require('../models/Evento');
 
-// Retorna um array com todos os documentos do banco de dados
+// Retorna um array com todos os documentos do banco de dadoss
 router.get('/', (req, res) => {
   Evento.find()
     .then(eventos => {
