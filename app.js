@@ -34,7 +34,7 @@ app.use(session({ secret: `${process.env.SECRET}`, resave: false, saveUninitiali
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));
 
-mongoose.connect(`mongodb://root:${process.env.DB_COLECTION}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_USER}`)
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_COLECTION}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(err => {
     console.log(err)
   })
