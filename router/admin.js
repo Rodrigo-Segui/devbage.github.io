@@ -5,14 +5,15 @@ const bcrypt = require('bcrypt');
 
 const Admin = require('../models/Admin');
 
+const authenticationMiddleware = require('../middleware/autentic')
+
 router.post('/login/', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
     failureMessage: true
   }));
 
-router.post('/cadastrar', async (req,res) =>{
-
+router.post('/cadastrar',authenticationMiddleware,async (req,res) =>{
     const password = await bcrypt.hash(req.body.password, 10);
 
     const adm = new Admin({
