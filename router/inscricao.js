@@ -12,12 +12,12 @@ router.get('/', (req, res) => {
     .catch(error => res.status(500).json(error));
 });
 
+
 // Cria um novo documento e salva no banco
 router.post('/nova', (req, res) => {
   const novaInscricao = new Inscricao({
     nome: req.body.nome,
     email: req.body.email,
-    cpf: req.body.cpf,
     idEvento: req.body.id
   });
 
@@ -33,7 +33,7 @@ router.post('/nova', (req, res) => {
 
 // Atualizando dados de um inscricao já existente
 router.put('/editar/:id', (req, res) => {
-  const novosDados = { nome: req.body.nome, email: req.body.email, cpf: req.body.cpf };
+  const novosDados = { nome: req.body.nome, email: req.body.email};
 
   Evento.findOneAndUpdate({ _id: req.params.id }, novosDados, { new: true })
     .then(inscricao => {

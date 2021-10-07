@@ -8,9 +8,6 @@ const inscricaoSchema = new Schema({
   email: {
     type: String,
   },
-  cpf: {
-    type: String,
-  },
   idEvento:{
     type: String,
   },

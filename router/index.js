@@ -2,8 +2,7 @@ const { Router } = require('express');
 const Evento = require('../models/Evento');
 const router = Router();
 
-router.get('/', (req,res) => {
-
+router.get('/',(req,res) => {
   Evento.find()
     .then(eventos => {
       
