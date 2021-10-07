@@ -5,12 +5,8 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Cadastrar evento</h5>
       </div>
-      <form action="/incricoes/nova" method="POST">
+      <form method="POST">
         <div class="modal-body">
-          <div class="form-group">
-            <input type="hidden" class="form-control" id="id" name="id" aria-describedby="id"
-              placeholder="Seu id">
-          </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nome"
@@ -43,9 +39,43 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button style="background-color: green; border: 0;" type="submit" class="btn btn-primary">Cadastrar</button>
+          <button style="background-color: green; border: 0;" type="button" onClick="cadastrarEvento()" class="btn btn-primary">Cadastrar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<script>
+    function cadastrarEvento() {
+     	let ativar = null;
+		var radios = document.getElementsByName('flexRadioDefault');
+		for (var i = 0, length = radios.length; i < length; i++) {
+  			if (radios[i].checked) {
+				ativar = i;
+				break;
+  			}
+		}
+        
+        let ativo = null
+        if(ativar == 0) {
+            ativo = true;
+        }
+        if(ativar == 1){
+            ativo = false;
+        }
+
+        fetch('/eventos/novo', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                nome: document.getElementById('nome').value,
+                descricao: document.getElementById('descricao').value,
+                data: document.getElementById('data').value,
+                ativo: ativo,
+        }),
+        }).then(ref => {
+            alert('Evento cadastrado com sucesso!');
+        });
+    }
+</script>
