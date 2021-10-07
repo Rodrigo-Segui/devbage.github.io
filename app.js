@@ -49,7 +49,7 @@ const admin = require('./router/admin')
 //Configurando as Rotas
 app.use('/', index);
 app.use('/eventos', eventos);
-app.use('/incricoes', inscricoes);
+app.use('/inscricoes', inscricoes);
 app.use('/admin', admin);
 
 module.exports = app;
