@@ -6,18 +6,6 @@ const Admin = require('../models/Admin');
 
 module.exports = function() {
 
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        Admin.findOne({ username: username }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (!user.verifyPassword(password)) { return done(null, false); }
-        return done(null, user);
-      });
-    }
-));
-
-
 passport.use(new Strategy(function(username, password, cb) {
     Admin.findOne({ username: username }, function(err, row) {
       if (err) { return cb(err); }
