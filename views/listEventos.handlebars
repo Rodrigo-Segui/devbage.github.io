@@ -1,0 +1,249 @@
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalCadastroEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cadastro Evento</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="/eventos/novo">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Nome</label>
+							<input type="text" class="form-control" id="nome" name="nome" aria-describedby="nome"
+								placeholder="Nome do evento">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Descrição</label>
+							<input type="text" class="form-control" id="descricao" name="descricao"
+								aria-describedby="descricao" placeholder="Descrição">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Local</label>
+							<input type="text" class="form-control" id="local" name="local" aria-describedby="local"
+								placeholder="local">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Data</label>
+							<input type="date" class="form-control" id="data" name="data" aria-describedby="data"
+								placeholder="Data do evento">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Ativo</label>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="ativo" id="flexRadioDefault1"
+									value="true">
+								<label class="form-check-label" for="flexRadioDefault1">
+									Ativar
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="ativo" id="flexRadioDefault2"
+									value="false" checked>
+								<label class="form-check-label" for="flexRadioDefault2">
+									Desativar
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button style="background-color: #40dda4; border: 0;" type="submit"
+							class="btn btn-primary">Cadastrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEditarEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Editar Evento</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form method="POST" id="formEdit" action="">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Nome</label>
+							<input type="text" class="form-control" id="nomeEditar" name="nome" aria-describedby="nome"
+								placeholder="Nome do evento">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Descrição</label>
+							<input type="text" class="form-control" id="descricaoEditar" name="descricao"
+								aria-describedby="descricao" placeholder="Descrição">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Local</label>
+							<input type="text" class="form-control" id="localEditar" name="local" aria-describedby="local"
+								placeholder="local">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Data</label>
+							<input type="date" class="form-control" id="dataEditar" name="data" aria-describedby="data"
+								placeholder="Data do evento">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Ativo</label>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="ativo" id="flexRadioDefault1Editar"
+									value="true">
+								<label class="form-check-label" for="flexRadioDefault1">
+									Ativar
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" value="false" type="radio" name="ativo"
+									id="flexRadioDefault2Editar">
+								<label class="form-check-label" for="flexRadioDefault2">
+									Desativar
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button style="background-color: #40dda4; border: 0;" type="submit"
+							class="btn btn-primary">Editar </button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalDeleteEvento">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Deseja Deletar?</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Tem certeza que deseja excluir o evento ?</p>
+				<input type="hidden" id="id">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" onclick="deleteEvent()">Deletar</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light">
+	<a class="navbar-brand" href="#">
+		<img src="/assets/img/apple-touch-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+		DevBage - Painel Administrativo
+	</a>
+	<a href="/admin/logout">Sair</a>
+</nav>
+
+
+<div class="container m-4 p-1">
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroEvento">
+		Cadastrar novo evento
+	</button>
+
+</div>
+
+<div class="container">
+
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Nome do Evento</th>
+				<th scope="col">Descrição</th>
+				<th scope="col">Local</th>
+				<th scope="col">Data</th>
+				<th scope="col">Ativo</th>
+				<th scope="col">Opções</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#eventos}}
+			<tr>
+				<td>{{nome}}</td>
+				<td>{{descricao}}</td>
+				<td>{{local}}</td>
+				<td>{{data}}</td>
+				<td>{{ativo}}</td>
+				<td><button class="btn btn-info m-1" onclick="editFunction('{{_id}}')">Editar</button><button
+						class="btn btn-danger" onclick="openModal('{{_id}}')">Excluir</button></td>
+			</tr>
+			{{/eventos}}
+		</tbody>
+	</table>
+
+</div>
+
+<script>
+
+	function openModal(id) {
+		document.getElementById("id").value = id;
+		$("#modalDeleteEvento").modal("show");
+	}
+	function closeModal() {
+		$("#modalDeleteEvento").modal("hide");
+	}
+
+	function deleteEvent() {
+		let id = document.getElementById("id").value
+		fetch(`/eventos/delete/${id}`, {
+			method: 'DELETE',
+			headers: { 'Content-type': 'application/json' }
+		})
+			.then(ref => {
+				alert('Evento cadastrado com sucesso!');
+				location.reload()
+			});
+	}
+
+	function editFunction(id) {
+		fetch(`/eventos/${id}`, {
+			method: 'GET',
+			headers: { 'Content-type': 'application/json' }
+		})
+			.then(response => response.json())
+			.then(ref => {
+				document.getElementById('nomeEditar').value = ref.nome
+				document.getElementById('descricaoEditar').value = ref.descricao
+				document.getElementById('dataEditar').value = ref.data
+				document.getElementById('localEditar').value = ref.local
+				document.getElementById('formEdit').action = `/eventos/editar/${ref.id}`
+				document.getElementById('formEdit').method = `POST`
+
+				console.log(ref.id)
+				ref.ativo ? document.getElementById('flexRadioDefault1Editar').checked = true : document.getElementById('flexRadioDefault2Editar').checked = true
+				$("#modalEditarEvento").modal("show");
+			});
+	}
+</script>

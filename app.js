@@ -7,6 +7,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session')
 const passport = require('passport');
+const flash = require('connect-flash')
 require('./config/auth');
 
 const app = express();
@@ -39,6 +40,14 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD
     console.log(err)
   })
 
+app.use(flash())
+
+app.use((req,res,next) =>{
+  res.locals.sucess_msg = req.flash("sucess_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error")
+  next();
+})
 
 //Adquirindo as Rotas
 const index = require('./router/index');

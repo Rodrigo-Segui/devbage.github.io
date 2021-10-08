@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { format } = require('date-fns');
 
 const Evento = require('../models/Evento');
 
@@ -25,20 +26,35 @@ router.post('/novo', (req, res) => {
   novoEvento
     .save()
     .then(evento => {
-      res.json(evento);
+      res.redirect('/admin/eventos')
     })
     .catch(error => {
       res.status(500).json(error);
     });
 });
 
-// Atualizando dados de um evento já existente
-router.put('/editar/:id', (req, res) => {
-  const novosDados = { nome: req.body.nome, descricao: req.body.descricao, local: req.body.local, data: req.body.data, data: req.body.ativo };
 
-  Evento.findOneAndUpdate({ _id: req.params.id }, novosDados, { new: true })
+router.get('/:id', async (req,res)=>{
+  let evento = await Evento.findOne({ _id: req.params.id })
+  
+    let eventosMap = {
+        id: evento._id,
+        nome: evento.nome,
+        descricao: evento.descricao,
+        local: evento.local,
+        data: format(evento.data, 'yyyy-MM-dd'),
+        ativo: evento.ativo,
+    }
+    return res.json(eventosMap);
+})
+
+// Atualizando dados de um evento já existente
+router.post('/editar/:id', (req, res) => {
+  const novosDados = { nome: req.body.nome, descricao: req.body.descricao, local: req.body.local, data: req.body.data, ativo: req.body.ativo };
+
+  Evento.updateOne({ _id: req.params.id }, novosDados, { new: true })
     .then(evento => {
-      res.json(evento);
+      res.redirect('/admin/eventos');
     })
     .catch(error => res.status(500).json(error));
 });

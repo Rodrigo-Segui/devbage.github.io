@@ -1,33 +1,25 @@
 const { Router } = require('express');
-const Evento = require('../models/Evento');
 const router = Router();
+const Evento = require('../models/Evento');
 
-router.get('/',(req,res) => {
+router.get('/', (req, res) => {
   Evento.find()
     .then(eventos => {
-      
-      let eventosMap = eventos.map(evento =>{
+
+      let eventosMap = eventos.map(evento => {
         return {
-          _id : evento._id,
+          _id: evento._id,
           nome: evento.nome,
+          local: evento.local,
           descricao: evento.descricao
         }
       })
-    console.log(eventosMap)
-    return res.render('index', { eventos: eventosMap});
-  })
-  .catch(error => res.status(500).json(error));
+      return res.render('index', { eventos: eventosMap });
+    })
+    .catch(error => res.status(500).json(error));
 
 
 });
-
-router.get('/admin/login', (req, res) => {
-   return res.render('login', { layout: 'admin' });
-})
-
-router.get('/admin/eventos', (req, res) => {
-  return res.render('cadastroevento', { layout: 'admin' });
-})
 
 
 module.exports = router

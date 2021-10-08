@@ -24,10 +24,12 @@ router.post('/nova', (req, res) => {
   novaInscricao
     .save()
     .then(inscricao => {
+      req.flash('sucess_msg', 'Sucesso');
       return res.redirect('/')
     })
     .catch(error => {
-      res.status(500).json(error);
+      req.flash('error_msg', 'Error');
+      return res.redirect('/')
     });
 });
 
