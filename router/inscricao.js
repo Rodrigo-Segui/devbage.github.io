@@ -24,7 +24,7 @@ router.post('/nova', (req, res) => {
   novaInscricao
     .save()
     .then(inscricao => {
-      res.json(inscricao);
+      return res.redirect('/')
     })
     .catch(error => {
       res.status(500).json(error);
